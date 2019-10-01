@@ -1,0 +1,42 @@
+import vehiculos.*
+import dependencias.*
+
+describe " Test Deportes "{
+	
+	var deportes = new Dependencia()
+	var cultura = new Dependencia()
+	var cachito = new ChevroletCorsa()
+	var corsaAzul = new ChevroletCorsa()
+	var corsaVerde = new ChevroletCorsa()
+	var renaultKwid = new RenaultKwid()
+	var autoEspecial = new AutoEspecial()
+	var renaultKwidC1 = new RenaultKwid()
+	var renaultKwidC2 = new RenaultKwid()
+	
+	
+	fixture {
+		
+		deportes.cantidadDeEmpleados(45)
+		deportes.cantidadDeEmpleados(31)
+		cachito.color(rojo)
+		corsaAzul.color(azul)
+		corsaVerde.color(verde)
+		renaultKwid.tieneTanqueAdicional(true)
+		renaultKwidC1.tieneTanqueAdicional(true)
+		renaultKwidC2.tieneTanqueAdicional(false)
+		trafic.interior(interiorPopular)
+		trafic.motor(motorBataton)
+		autoEspecial.capacidad(5)
+		autoEspecial.velocidadMaxima(160)
+		autoEspecial.peso(1200)
+		autoEspecial.color(cremita)
+		deportes.flota([cachito,corsaAzul,corsaVerde])
+		cultura.flota([cachito,renaultKwidC1,renaultKwidC2,trafic ])
+	}
+	
+	test "flota" {
+		assert.equals(3900, deportes.pesoTotalFlota())
+		assert.equals(9350, cultura.pesoTotalFlota())
+	}
+	
+}

@@ -1,5 +1,20 @@
+class Pedidos{
+	var property distanciaARecorrer
+	var property tiempoMaximo
+	var property cantidadDePasajeros
+	var property coloresIncompatibles = #{}
+		method velocidadRequerida()= distanciaARecorrer/tiempoMaximo
+		method satisfacePedido(veh){
+			return veh.velocidadMaxima()+10 > self.velocidadRequerida()  and
+				   veh.capacidad() <= cantidadDePasajeros and
+				   !coloresIncompatibles.contains(veh.color())     	
+		
+		
+		}
+}
+
 class Dependencia {
-	var flota = []	
+	var property flota = []	
 	var property cantidadDeEmpleados
 	
 	method agregarAFlota(vehiculo) { flota.add(vehiculo) }
